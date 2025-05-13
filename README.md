@@ -1,5 +1,4 @@
-readme:
-  title: "📊 Habit Tracker"
+title: "📊 Habit Tracker"
   description: >
     A full-stack habit tracking application built with React. This app helps users build and maintain 
     healthy habits through daily tracking and visualization.
