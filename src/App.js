@@ -16,29 +16,27 @@ import HabitForm from './pages/habits/HabitForm.js';
 import Stats from './pages/stats/Stats.js';
 import Profile from './pages/profile/Profile.js';
 import NotFound from './pages/NotFound.js';
+import LandingPage from './pages/LandingPage.js';
 
 function App() {
   const { isAuthenticated, checkAuth } = useAuth();
   const { theme } = useTheme();
 
   useEffect(() => {
-    // Check if user is authenticated on app load
-    checkAuth();
-
-    // Set theme on document
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    checkAuth(); // Check auth status on load
+    document.documentElement.classList.toggle('dark', theme === 'dark'); // Set theme
   }, [checkAuth, theme]);
 
   return (
     <Routes>
-      {/* Public Routes */}
+      {/* Public Routes with Auth Layout */}
       <Route path="/" element={<AuthLayout />}>
-        <Route index element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
+        <Route index element={isAuthenticated ? <Navigate to="/dashboard" /> : <LandingPage />} />
         <Route path="login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
         <Route path="register" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Register />} />
       </Route>
 
-      {/* Unprotected Routes */}
+      {/* Protected Routes with Main Layout */}
       <Route path="/" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="habits">
@@ -50,7 +48,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
       </Route>
 
-      {/* Not Found Route */}
+      {/* Catch-All Not Found */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

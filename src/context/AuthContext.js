@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, [apiUrl]);
 
+
   // Login user
   const login = async (email, password) => {
     try {

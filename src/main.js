@@ -7,6 +7,7 @@ import { ThemeProvider } from './context/ThemeContext.js';
 import { HabitProvider } from './context/HabitContext.js';
 import { Toaster } from 'react-hot-toast';
 import './index.css';
+// import ErrorBoundary from './components/ErrorBoundary';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
